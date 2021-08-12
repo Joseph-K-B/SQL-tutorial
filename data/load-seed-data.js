@@ -28,7 +28,7 @@ async function run() {
       chords.map(chord => {
         return client.query(`
                     INSERT INTO chords (chord, key, class, major, id)
-                    VALUES ($1, $2, $3);
+                    VALUES ($1, $2, $3, $4, $5);
                 `,
         [chord.key, chord.chord, chord.id, chord.major, chord.class]);
       })
