@@ -22,15 +22,15 @@ async function run() {
       })
     );
     
-    const  chord= chords[0].rows[0];
+    // const  chord = chords[0].rows[0];
 
     await Promise.all(
       chords.map(chord => {
         return client.query(`
-                    INSERT INTO chords (name, key, class)
+                    INSERT INTO chords (chord, key, class, major, id)
                     VALUES ($1, $2, $3);
                 `,
-        [chord.key, chord.chord, chord.id]);
+        [chord.key, chord.chord, chord.id, chord.major, chord.class]);
       })
     );
     
