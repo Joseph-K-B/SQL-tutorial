@@ -37,8 +37,11 @@ describe('app routes', () => {
         .get('/chords')
         .expect('Content-Type', /json/)
         .expect(200);
-
-      expect(data.body).toEqual(expectation);
-    });
+      
+      const chordList = data.body.map(chords => chords.chord);
+      expect(chordList.body).toEqual(expectation);
+      expect(chordList.length).toBe(chordData.length);
+      
+    }, 1000000);
   });
 });
