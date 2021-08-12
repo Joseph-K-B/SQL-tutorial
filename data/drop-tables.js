@@ -1,5 +1,5 @@
 const client = require('../lib/client');
-const { getEmoji } = require('../lib/emoji.js');
+
 
 run();
 
@@ -13,10 +13,10 @@ async function run() {
             DROP TABLE IF EXISTS chords;
         `);
 
-    console.log(' drop tables complete', getEmoji(), getEmoji(), getEmoji());
+    
   }
   catch(err) {
-    console.log(err);
+    // console.log(err);
   }
   finally {
     client.end();
