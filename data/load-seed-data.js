@@ -11,7 +11,7 @@ async function run() {
   try {
     await client.connect();
 
-    const users = await Promise.all(
+    const chords = await Promise.all(
       usersData.map(user => {
         return client.query(`
                       INSERT INTO users (email, hash)
@@ -21,8 +21,8 @@ async function run() {
         [user.email, user.hash]);
       })
     );
-      
-    const user = users[0].rows[0];
+    
+    const  chord= chords[0].rows[0];
 
     await Promise.all(
       chords.map(chord => {
@@ -30,7 +30,7 @@ async function run() {
                     INSERT INTO chords (name, key, class)
                     VALUES ($1, $2, $3);
                 `,
-        [chord.key, chord.chord, user.id]);
+        [chord.key, chord.chord, chord.id]);
       })
     );
     
