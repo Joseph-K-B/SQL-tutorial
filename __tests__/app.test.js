@@ -43,5 +43,14 @@ describe('app routes', () => {
       expect(chordList.length).toBe(chordData.length);
       
     }, 1000000);
+    test('GET /chords/:id returns chord', async ()=>{
+      const expectation = chordData[0];
+      expectation.id = 1;
+      const data = await fakeRequest(app)
+        .get('/chords/1')
+        .expect('Content-Type', /json/)
+        .expect(200);
+      expect(data.body).toEqual(expectation);
+    });
   });
 });
